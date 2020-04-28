@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <item   android:id="@+id/item1"
+        android:title="New Year Countdown"
+        app:showAsAction="never" />
+        <item   android:id="@+id/item2"
+            android:title="Mid-Autumn Countdown"
+            app:showAsAction="never" />
+
+        <item   android:id="@+id/item3"
+        android:title="Optional Countdown"
+        app:showAsAction="never" />
+</menu>
