@@ -26,7 +26,8 @@ import java.util.concurrent.TimeUnit;
 public class third extends AppCompatActivity {
     private final static String TAG = "third";
 
-    private Button button;
+    private Button buttonstart;
+    private Button buttonstop;
     private Toolbar toolbar;
     private TextView DisplayDate;
     private DatePickerDialog.OnDateSetListener DateSetListener;
@@ -67,9 +68,9 @@ public class third extends AppCompatActivity {
                 String date = month + "/" + day + "/" + year;
                 DisplayDate.setText(date);
 
-                button = (Button) findViewById(R.id.startbutton);
+                buttonstart = (Button) findViewById(R.id.startbutton);
                 final int finalMonth = month;
-                button.setOnClickListener(new View.OnClickListener() {
+                buttonstart.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Calendar c = Calendar.getInstance();
@@ -78,17 +79,20 @@ public class third extends AppCompatActivity {
                         int pDay = c.get(Calendar.DAY_OF_MONTH);
                         if ( year < pYear )
                             DisplayDate.setText("You must input one day in the future!");
-                        else if ( year > pYear )
+                        if ( year > pYear )
                             startcd();
-                            else if (finalMonth < pMonth)
+                        if (year == pYear){
+                            if (finalMonth-1 < pMonth)
                                 DisplayDate.setText("You must input one day in the future!");
-                                else if (finalMonth > pMonth)
-                                    startcd();
-                                    else if (day < pDay)
-                                        DisplayDate.setText("You must input one day in the future!");
-                                        else startcd();
+                            if (finalMonth-1 > pMonth)
+                                startcd();
+                            if (finalMonth-1 == pMonth){
+                                if (day <= pDay)
+                                    DisplayDate.setText("You must input one day in the future!");
+                                else startcd();
+                            }
+                         }
                     }
-
                     private void startcd() {
                         Calendar start_calendar = Calendar.getInstance();
                         Calendar end_calendar = Calendar.getInstance();
@@ -122,6 +126,7 @@ public class third extends AppCompatActivity {
                         };
                         cdm.start();
                     }
+
                 });
             }
         };

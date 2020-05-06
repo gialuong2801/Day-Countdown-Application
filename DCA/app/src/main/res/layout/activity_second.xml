@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/tt1">
+    android:background="@drawable/tt2">
 
     <include layout="@layout/toolbar" />
 
@@ -14,7 +14,8 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:textColor="@android:color/holo_red_dark"
-        android:textSize="32sp" />
+        android:textSize="32sp"
+        android:fontFamily="@font/zcool"/>
 
     <TextView
         android:id="@+id/MAC"
@@ -25,8 +26,9 @@
         android:layout_alignParentRight="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="239dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginRight="67dp"
+        android:fontFamily="@font/zcool"
         android:gravity="center"
         android:text="Time to Mid-Autumn:"
         android:textColor="#ffff00"

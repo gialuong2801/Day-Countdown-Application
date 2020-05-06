@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".first"
-    android:background="@drawable/tet5">
+    android:background="@drawable/tet9">
 
     <include layout="@layout/toolbar" />
 
@@ -16,7 +16,8 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="32sp" />
+        android:textSize="35sp"
+        android:fontFamily="@font/senty" />
 
     <TextView
         android:id="@+id/NYC"
@@ -26,13 +27,14 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="243dp"
-        android:layout_marginEnd="57dp"
-        android:layout_marginRight="57dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginRight="69dp"
+        android:fontFamily="@font/senty"
         android:gravity="center"
-        android:text="Time to New Year:"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="30sp"
+        android:text="Time to Tet:"
+        android:textColor="#ffff00"
+        android:textSize="40sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

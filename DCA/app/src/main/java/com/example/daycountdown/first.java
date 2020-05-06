@@ -28,7 +28,7 @@ public class first extends AppCompatActivity {
         TextView toolbarTitle = findViewById(R.id.tab1);
 
         toolbar.setTitle("");
-        toolbarTitle.setText("New Year Countdown");
+        toolbarTitle.setText("Tet Holiday Countdown");
         setSupportActionBar(toolbar);
 
         textView = findViewById(R.id.NewYearCountdown);
@@ -36,13 +36,13 @@ public class first extends AppCompatActivity {
         Calendar start_calendar = Calendar.getInstance();
         Calendar end_calendar = Calendar.getInstance();
 
-        end_calendar.set(2021, 0, 1, 0,0,0);
+        end_calendar.set(2021, 1, 12, 0,0,0);
 
         long start_millis = start_calendar.getTimeInMillis();
         long end_millis = end_calendar.getTimeInMillis();
         long total_millis = end_millis - start_millis;
 
-        CountDownTimer cdny = new CountDownTimer(total_millis, 86400000) {
+        CountDownTimer cdny = new CountDownTimer(total_millis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 long days = TimeUnit.MILLISECONDS.toDays(millisUntilFinished);

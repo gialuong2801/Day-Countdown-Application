@@ -44,7 +44,7 @@ public class second extends AppCompatActivity {
         long end_millis = end_calendar.getTimeInMillis();
         long total_millis = end_millis - start_millis;
 
-        CountDownTimer cdm = new CountDownTimer(total_millis, 86400000) {
+        CountDownTimer cdm = new CountDownTimer(total_millis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 long days = TimeUnit.MILLISECONDS.toDays(millisUntilFinished);
