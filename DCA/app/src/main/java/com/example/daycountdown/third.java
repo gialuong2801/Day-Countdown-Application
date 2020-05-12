@@ -102,7 +102,7 @@ public class third extends AppCompatActivity {
                         long end_millis = end_calendar.getTimeInMillis();
                         long total_millis = end_millis - start_millis;
 
-                        CountDownTimer cdm = new CountDownTimer(total_millis, 1000) {
+                        final CountDownTimer cdm = new CountDownTimer(total_millis, 1000) {
                             @Override
                             public void onTick(long millisUntilFinished) {
                                 long days = TimeUnit.MILLISECONDS.toDays(millisUntilFinished);
@@ -125,8 +125,17 @@ public class third extends AppCompatActivity {
                             }
                         };
                         cdm.start();
-                    }
 
+                        Button buttonstop;
+                        buttonstop = (Button) findViewById(R.id.stopbutton);
+                        buttonstop.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                cdm.cancel();
+                                DisplayDate.setText("Select Date");
+                            }
+                        });
+                    }
                 });
             }
         };
