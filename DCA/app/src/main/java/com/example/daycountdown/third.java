@@ -3,6 +3,10 @@ package com.example.daycountdown;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,12 +23,17 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 public class third extends AppCompatActivity {
     private final static String TAG = "third";
+
+    private final String CHANNEL_ID = "NewNoti";
+    private final int NOTIFICATION_ID = 001;
 
     private Button buttonstart;
     private Button buttonstop;
@@ -117,6 +126,17 @@ public class third extends AppCompatActivity {
                                 long seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished);
 
                                 DisplayDate.setText(days + ":" + hours + ":" + minutes + ":" + seconds);
+
+                                if (seconds == 86400){
+                                    NotificationCompat.Builder builder = new NotificationCompat.Builder(third.this,CHANNEL_ID);
+                                    builder.setSmallIcon(R.drawable.ic_message);
+                                    builder.setContentTitle("New Notification");
+                                    builder.setContentText("It's one day left to your event!");
+                                    builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+                                    NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(third.this);
+                                    notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
+                                }
                             }
 
                             @Override

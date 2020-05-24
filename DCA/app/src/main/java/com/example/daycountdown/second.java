@@ -12,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
@@ -20,6 +22,9 @@ public class second extends AppCompatActivity {
     TextView textView;
 
     private Toolbar toolbar;
+
+    private final String CHANNEL_ID = "NewNoti";
+    private final int NOTIFICATION_ID = 001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +64,17 @@ public class second extends AppCompatActivity {
                 long seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished);
 
                 textView.setText(days + ":" + hours + ":" + minutes + ":" + seconds);
+
+                if (seconds == 86400){
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(second.this,CHANNEL_ID);
+                    builder.setSmallIcon(R.drawable.ic_message);
+                    builder.setContentTitle("New Notification");
+                    builder.setContentText("It's one day left to your event!");
+                    builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+                    NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(second.this);
+                    notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
+                }
             }
 
             @Override
