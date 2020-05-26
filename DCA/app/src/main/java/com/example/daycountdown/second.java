@@ -24,7 +24,7 @@ public class second extends AppCompatActivity {
     private Toolbar toolbar;
 
     private final String CHANNEL_ID = "NewNoti";
-    private final int NOTIFICATION_ID = 001;
+    private final int NOTIFICATION_ID = 002;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class second extends AppCompatActivity {
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(second.this,CHANNEL_ID);
                     builder.setSmallIcon(R.drawable.ic_message);
                     builder.setContentTitle("New Notification");
-                    builder.setContentText("It's one day left to your event!");
+                    builder.setContentText("It's one day left to Mid-Autumn!");
                     builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
                     NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(second.this);

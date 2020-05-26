@@ -86,6 +86,7 @@ public class third extends AppCompatActivity {
                         int pYear = c.get(Calendar.YEAR);
                         int pMonth = c.get(Calendar.MONTH);
                         int pDay = c.get(Calendar.DAY_OF_MONTH);
+
                         if ( year < pYear )
                             DisplayDate.setText("You must input one day in the future!");
                         if ( year > pYear )
@@ -137,6 +138,7 @@ public class third extends AppCompatActivity {
                                     NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(third.this);
                                     notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
                                 }
+
                             }
 
                             @Override
@@ -160,6 +162,8 @@ public class third extends AppCompatActivity {
             }
         };
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -22,7 +22,7 @@ public class first extends AppCompatActivity {
     private Toolbar toolbar;
 
     private final String CHANNEL_ID = "NewNoti";
-    private final int NOTIFICATION_ID = 001;
+    private final int NOTIFICATION_ID = 003;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +63,12 @@ public class first extends AppCompatActivity {
 
                 textView.setText(days + ":" + hours + ":" + minutes + ":" + seconds);
 
-                if (seconds == 86400){
-                    NotificationCompat.Builder builder = new NotificationCompat.Builder(first.this,CHANNEL_ID);
-                    builder.setSmallIcon(R.drawable.ic_message);
-                    builder.setContentTitle("New Notification");
-                    builder.setContentText("It's one day left to your event!");
-                    builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                if (seconds <= 86400){
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(first.this,CHANNEL_ID)
+                        .setSmallIcon(R.drawable.ic_message)
+                        .setContentTitle("New Notification")
+                        .setContentText("It's one day left to Tet holiday!")
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
                     NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(first.this);
                     notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
