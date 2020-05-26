@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -12,6 +13,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.nfc.Tag;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -128,21 +130,20 @@ public class third extends AppCompatActivity {
 
                                 DisplayDate.setText(days + ":" + hours + ":" + minutes + ":" + seconds);
 
-                                if (seconds == 86400){
-                                    NotificationCompat.Builder builder = new NotificationCompat.Builder(third.this,CHANNEL_ID);
-                                    builder.setSmallIcon(R.drawable.ic_message);
-                                    builder.setContentTitle("New Notification");
-                                    builder.setContentText("It's one day left to your event!");
-                                    builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-                                    NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(third.this);
-                                    notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
-                                }
-
                             }
 
                             @Override
                             public void onFinish() {
+                                createNotificationChannel();
+                                NotificationCompat.Builder builder = new NotificationCompat.Builder(third.this,CHANNEL_ID);
+                                builder.setSmallIcon(R.drawable.ic_message);
+                                builder.setContentTitle("New Notification");
+                                builder.setContentText("It's time for your event!");
+                                builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+                                NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(third.this);
+                                notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
+
                                 DisplayDate.setText("NOW! IT'S YOUR TIME!!!");
                             }
                         };
@@ -164,6 +165,20 @@ public class third extends AppCompatActivity {
     }
 
 
+    private void createNotificationChannel(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "My New Notification";
+            String description = "Notification for events";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID,name,importance);
+
+            notificationChannel.setDescription(description);
+
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
